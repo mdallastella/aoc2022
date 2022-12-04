@@ -27,7 +27,7 @@
           :body
           (spit (str path "/input.txt"))))))
 
-(clerk/serve! {:port 7878 :browse true})
+(clerk/serve! {:port 7878 :browse true :watch-paths ["src"]})
 
 (comment
   (clerk/build! {:paths (index/build-paths) :browse true}))
