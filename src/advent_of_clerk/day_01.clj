@@ -15,13 +15,21 @@
 (def input
   (line-seq (io/reader (str base-path "/input.txt"))))
 
-;; ## Solution
+;; ## Solution - part 1
 ;; Split the list of values by empty line and calculate the sum
-(def food-by-elf
+(def calories-by-elf
   (->> input
        (map parse-long)
        (partition-by nil?)
-       (map #(apply + %))))
+       (map #(apply + %))
+       (remove nil?)))
 
 ;; Find the highest value
-(apply max (remove nil? food-by-elf))
+(apply max calories-by-elf)
+
+;; ## Solution - part 2
+;; Sort the calories from largest to smaller, take the first three and sum them.
+(->> calories-by-elf
+     (sort >)
+     (take 3)
+     (apply +))
