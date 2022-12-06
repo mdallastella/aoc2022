@@ -9,6 +9,7 @@
 ^{::clerk/visibility {:code :hide :result :hide}}
 (def text (slurp (str base-path "/text.md")))
 
+^{::clerk/visibility {:code :hide}}
 (clerk/md text)
 
 ;; ## Input
@@ -21,7 +22,7 @@
   (->> input
        (map parse-long)
        (partition-by nil?)
-       (map #(apply + %))
+       (map #(reduce + %))
        (remove nil?)))
 
 ;; Find the highest value
@@ -32,4 +33,4 @@
 (->> calories-by-elf
      (sort >)
      (take 3)
-     (apply +))
+     (reduce +))
