@@ -28,6 +28,7 @@
           (spit (str path "/input.txt"))))))
 
 (clerk/serve! {:port 7878 :browse true :watch-paths ["src"]})
+(clerk/show! 'advent-of-clerk.index)
 
 (comment
   (clerk/build! {:paths (index/build-paths) :browse true}))
